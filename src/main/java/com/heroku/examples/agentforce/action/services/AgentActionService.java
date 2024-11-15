@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class AgentActionService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AgentActionService.class);
-
     @PostMapping("/agentaction")
     public AgentResponse process(@RequestBody AgentRequest request) {
         AgentResponse response = new AgentResponse();
