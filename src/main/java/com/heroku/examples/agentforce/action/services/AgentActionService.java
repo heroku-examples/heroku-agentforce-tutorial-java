@@ -6,16 +6,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 @Tag(name = "Agentforce Action", description = "Basic Agentforce Action example")
 @RestController
 class AgentActionService {
 
     @PostMapping("/agentaction")
-    public AgentResponse process(@RequestBody AgentRequest request) {
+    public AgentResponse agentAction(@RequestBody AgentRequest request) {
         AgentResponse response = new AgentResponse();
-        response.message = """
-            Welcome %s to the Matrix""".formatted(request.name);
-        return response;
+        try {
+            response.message = """
+                    <img src="data:image/png;base64,%s">
+                    """.formatted(BadgeCreator.createBadge("Heroku Agent Action", "Deployed by " + request.name));
+            Files.writeString(Path.of("./debug.html"), "<body style=\"background: black\">" + response.message + "</body>");
+            return response;
+        } catch (Exception e) {
+            response.message = e.getMessage();
+            return response;
+        }
     }
 
     public static class AgentRequest {
