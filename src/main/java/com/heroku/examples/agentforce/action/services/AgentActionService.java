@@ -13,8 +13,8 @@ import java.nio.file.Path;
 @RestController
 class AgentActionService {
 
-    @PostMapping("/agentaction")
-    public AgentResponse agentAction(@RequestBody AgentRequest request) {
+    @PostMapping("/process")
+    public AgentResponse process(@RequestBody AgentRequest request) {
         AgentResponse response = new AgentResponse();
         try {
             response.message = """
