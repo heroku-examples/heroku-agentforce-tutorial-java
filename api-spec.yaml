@@ -1,0 +1,43 @@
+openapi: 3.0.1
+info:
+  title: Agentforce Action
+  description: Basic example of an Agentforce Action
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+tags:
+  - name: Agentforce Action
+    description: Basic Agentforce Action example
+paths:
+  /process:
+    post:
+      tags:
+        - Agentforce Action
+      operationId: process
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AgentRequest"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AgentResponse"
+components:
+  schemas:
+    AgentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Neo
+    AgentResponse:
+      type: object
+      properties:
+        message:
+          type: string
