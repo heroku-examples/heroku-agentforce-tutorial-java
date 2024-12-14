@@ -2,6 +2,8 @@
 Creating Agentforce Custom Actions with Heroku - Java
 =====================================================
 
+> 💡 **Heroku Integration Pilot:**<br/> These steps utilize generally availble features in Heroku and Salesforce. If you have joined the Heroku Integration pilot program please refer to these alternative [instructions](https://github.com/heroku-examples/heroku-agentforce-tutorial/tree/heroku-integration-pilot).
+> 
 This tutorial explains how to deploy a Heroku application written in Java that can be used to build an Agentforce custom action, extending the capabilities of any Agentforce agent with the power of Heroku's fully managed, elastic compute services.
 
 > **_IN A HURRY?_** This application has already been deployed publicly and is available at [https://agentforce-tutorial-java-fd05948b2c0a.herokuapp.com/swagger-ui/index.html](https://agentforce-tutorial-java-fd05948b2c0a.herokuapp.com/swagger-ui/index.html). This allows you to skip straight to [configuring Heroku-based actions in your Salesforce organization](https://github.com/heroku-examples/heroku-agentforce-tutorial?tab=readme-ov-file#step-2---creating-a-named-credential) to try it out through Agentforce first.
