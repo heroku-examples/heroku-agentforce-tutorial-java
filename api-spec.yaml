@@ -18,8 +18,8 @@ paths:
       x-sfdc:
         heroku:
           authorization:
-            connectedApp: 'HerokuServiceConnectedApp'
-            permissionSet: 'HerokuServicePermissions'      
+            connectedApp: 'BadgeServiceConnectedApp'
+            permissionSet: 'BadgeServicePermissions'      
       requestBody:
         content:
           application/json:

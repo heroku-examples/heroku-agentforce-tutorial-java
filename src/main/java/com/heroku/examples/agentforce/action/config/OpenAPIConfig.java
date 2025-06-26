@@ -17,8 +17,8 @@ public class OpenAPIConfig {
                     operation.addExtension("x-sfdc", Map.of(
                         "heroku", Map.of(
                             "authorization", Map.of(
-                                "connectedApp", "HerokuServiceConnectedApp",
-                                "permissionSet", "HerokuServicePermissions"
+                                "connectedApp", "BadgeServiceConnectedApp",
+                                "permissionSet", "BadgeServicePermissions"
                             )
                         )
                     ));
