@@ -15,6 +15,11 @@ paths:
       tags:
         - Agentforce Action
       operationId: process
+      x-sfdc:
+        heroku:
+          authorization:
+            connectedApp: 'HerokuServiceConnectedApp'
+            permissionSet: 'HerokuServicePermissions'      
       requestBody:
         content:
           application/json:

@@ -14,7 +14,7 @@ You can deploy this application to your Heroku account using the button below or
 To proceed with a CLI deployment, install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) and log in with your Heroku account (or [sign up](https://signup.heroku.com/)). Then, execute the following CLI commands:
 
 ```
-git clone -b heroku-integration-pilot https://github.com/heroku-examples/heroku-agentforce-tutorial-java
+git clone -b https://github.com/heroku-examples/heroku-agentforce-tutorial-java
 cd heroku-agentforce-tutorial-java
 heroku create myagentaction
 git push heroku main
