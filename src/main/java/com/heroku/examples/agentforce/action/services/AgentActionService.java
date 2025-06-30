@@ -2,7 +2,6 @@ package com.heroku.examples.agentforce.action.services;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,19 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 class AgentActionService {
 
     @Operation(
-        summary = "Generate a badge",
         description = "Use this action in response to requests for a Heroku badge with a name on it.",
         responses = {
             @ApiResponse(
                 responseCode = "200",
-                description = "This is the Heroku badge the user requested.",
-                content = @Content(mediaType = "*/*")
+                description = "This is the Heroku badge the user requested."
             )
         }
     )
     @PostMapping("/generateBadge")
     public String generateBadge(
-        @Parameter(description = "Name to be placed on the badge.", required = true)
+        @Parameter(description = "Name to be placed on the badge.")
         @RequestParam String name
     ) {
         try {

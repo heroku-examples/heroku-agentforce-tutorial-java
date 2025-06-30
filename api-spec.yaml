@@ -14,13 +14,14 @@ paths:
     post:
       tags:
       - Agentforce Action
+      description: Use this action in response to requests for a Heroku badge with
+        a name on it.
       operationId: generateBadge
-      description: Use this action in response to requests for a Heroku badge with a name on it.
       parameters:
       - name: name
         in: query
-        required: true
         description: Name to be placed on the badge.
+        required: true
         schema:
           type: string
       responses:
