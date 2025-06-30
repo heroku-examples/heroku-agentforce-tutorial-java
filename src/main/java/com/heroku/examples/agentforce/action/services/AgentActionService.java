@@ -1,39 +1,40 @@
 package com.heroku.examples.agentforce.action.services;
 
-import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.nio.file.Files;
-import java.nio.file.Path;
 
 @Tag(name = "Agentforce Action", description = "Basic Agentforce Action example")
 @RestController
 class AgentActionService {
 
-    @PostMapping("/process")
-    public AgentResponse process(@RequestBody AgentRequest request) {
-        AgentResponse response = new AgentResponse();
-        try {
-            response.message = """
-                    <img src="data:image/png;base64,%s">
-                    """.formatted(BadgeCreator.createBadge("Heroku Agent Action", "Deployed by " + request.name));
-            Files.writeString(Path.of("./debug.html"), "<body style=\"background: black\">" + response.message + "</body>");
-            return response;
-        } catch (Exception e) {
-            response.message = e.getMessage();
-            return response;
+    @Operation(
+        summary = "Generate a badge",
+        description = "Use this action in response to requests for a Heroku badge with a name on it.",
+        responses = {
+            @ApiResponse(
+                responseCode = "200",
+                description = "This is the Heroku badge the user requested.",
+                content = @Content(mediaType = "*/*")
+            )
         }
-    }
-
-    public static class AgentRequest {
-        @Schema(example = "Neo")
-        public String name;
-    }
-
-    public static class AgentResponse {
-        public String message;
+    )
+    @PostMapping("/generateBadge")
+    public String generateBadge(
+        @Parameter(description = "Name to be placed on the badge.", required = true)
+        @RequestParam String name
+    ) {
+        try {
+            return """
+                    <img src="data:image/png;base64,%s">
+                    """.formatted(BadgeCreator.createBadge("Heroku Agent Action", "Deployed by " + name));
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 }

@@ -4,45 +4,35 @@ info:
   description: Basic example of an Agentforce Action
   version: 1.0.0
 servers:
-  - url: http://localhost:8080
-    description: Generated server url
+- url: http://localhost:8080
+  description: Generated server url
 tags:
-  - name: Agentforce Action
-    description: Basic Agentforce Action example
+- name: Agentforce Action
+  description: Basic Agentforce Action example
 paths:
-  /process:
+  /generateBadge:
     post:
       tags:
-        - Agentforce Action
-      operationId: process
-      x-sfdc:
-        heroku:
-          authorization:
-            connectedApp: 'BadgeServiceConnectedApp'
-            permissionSet: 'BadgeServicePermissions'      
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/AgentRequest"
+      - Agentforce Action
+      operationId: generateBadge
+      description: Use this action in response to requests for a Heroku badge with a name on it.
+      parameters:
+      - name: name
+        in: query
         required: true
+        description: Name to be placed on the badge.
+        schema:
+          type: string
       responses:
         "200":
-          description: OK
+          description: This is the Heroku badge the user requested.
           content:
             '*/*':
               schema:
-                $ref: "#/components/schemas/AgentResponse"
-components:
-  schemas:
-    AgentRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          example: Neo
-    AgentResponse:
-      type: object
-      properties:
-        message:
-          type: string
+                type: string
+      x-sfdc:
+        heroku:
+          authorization:
+            connectedApp: BadgeServiceConnectedApp
+            permissionSet: BadgeServicePermissions
+components: {}

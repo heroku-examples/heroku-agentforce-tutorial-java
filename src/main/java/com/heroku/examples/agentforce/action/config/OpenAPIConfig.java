@@ -2,28 +2,27 @@ package com.heroku.examples.agentforce.action.config;
 
 import java.util.Map;
 
-import org.springdoc.core.customizers.OpenApiCustomiser;
+import org.springdoc.core.customizers.OperationCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.HandlerMethod;
+import io.swagger.v3.oas.models.Operation;
 
 @Configuration
 public class OpenAPIConfig {
 
     @Bean
-    public OpenApiCustomiser addCustomExtensions() {
-        return openApi -> {
-            openApi.getPaths().forEach((path, pathItem) -> {
-                pathItem.readOperations().forEach(operation -> {
-                    operation.addExtension("x-sfdc", Map.of(
-                        "heroku", Map.of(
-                            "authorization", Map.of(
-                                "connectedApp", "BadgeServiceConnectedApp",
-                                "permissionSet", "BadgeServicePermissions"
-                            )
-                        )
-                    ));
-                });
-            });
+    public OperationCustomizer addSfdcExtensionToOperation() {
+        return (Operation operation, HandlerMethod handlerMethod) -> {
+            operation.addExtension("x-sfdc", Map.of(
+                "heroku", Map.of(
+                    "authorization", Map.of(
+                        "connectedApp", "BadgeServiceConnectedApp",
+                        "permissionSet", "BadgeServicePermissions"
+                    )
+                )
+            ));
+            return operation;
         };
-    }
+    }    
 }
