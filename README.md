@@ -2,8 +2,9 @@
 Creating Agentforce Custom Actions with Heroku - Java
 =====================================================
 
-> 💡 **Heroku Integration Pilot:**<br/> These steps utilize generally availble features in Heroku and Salesforce. If you have joined the Heroku Integration pilot program please refer to these alternative [instructions](https://github.com/heroku-examples/heroku-agentforce-tutorial/tree/heroku-integration-pilot).
+> 💡 **Heroku Integration Pilot:**<br/> These steps utilize generally availble features in Heroku and Salesforce.
 > 
+
 This tutorial explains how to deploy a Heroku application written in Java that can be used to build an Agentforce custom action, extending the capabilities of any Agentforce agent with the power of Heroku's fully managed, elastic compute services.
 
 Deploying to Heroku
@@ -11,7 +12,7 @@ Deploying to Heroku
 
 You can deploy this application to your Heroku account using the button below or manually via the CLI.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/heroku-examples/heroku-agentforce-tutorial-java)
 
 To proceed with a CLI deployment, install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) and log in with your Heroku account (or [sign up](https://signup.heroku.com/)). Then, execute the following CLI commands:
 
