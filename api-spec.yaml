@@ -52,7 +52,7 @@ paths:
             isPii: true  # Optional, depending on whether the `name` should be considered PII
         heroku:
           authorization:
-            connectedApp: BadgeServiceConnectedApp
+            externalClientApp: BadgeServiceExternalClientApp
             permissionSet: BadgeServicePermissions
 
 components: {}
